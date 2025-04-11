@@ -1,27 +1,52 @@
-def safe_div(x, y):
-    """This function divides two numbers and avoids division by zero
+from typing import Union
+from tqdm import tqdm
 
-        Obtained from:
+
+def safe_div(x: Union[int, float], y: Union[int, float]) -> float:
+    """This function divides two numbers and avoids division by zero.
+
+    Obtained from:
         https://www.yawintutor.com/zerodivisionerror-division-by-zero/
 
-    :param x: x-value
-    :param y: y-value
-    :return: c: result
+    Parameters
+    ----------
+    x : int or float
+        Numerator.
+    y : int or float
+        Denominator. If zero, returns 0.0 to avoid ZeroDivisionError.
+
+    Returns
+    -------
+    float
+        Result of the division. Returns 0.0 if the denominator is zero.
+
+    Examples
+    --------
+    safe_div(10, 2)
+    5.0
+
+    safe_div(10, 0)
+    0.0
     """
 
     if y == 0:
-        c = 0.0
-    else:
-        c = x / y
-    return c
+        return 0.0
+    return x / y
 
 
-def callback(show_ind_prog, pbar):
-    """This callback function updates the progress bar
+def callback(show_ind_prog: bool, pbar: tqdm) -> None:
+    """Update the progress bar if enabled.
 
-    :param show_ind_prog: Boolean indicating if progress bar should be shown
-    :param pbar: progress-bar-object instance
-    :return: None
+    Parameters
+    ----------
+    show_ind_prog : bool
+        Flag indicating whether the progress bar should be updated.
+    pbar : tqdm.tqdm
+         Progress-bar-object instance.
+
+    Returns
+    -------
+    None
     """
 
     if show_ind_prog:

@@ -6,3 +6,7 @@ all_in/.idea/
 __pycache__/
 
 .venv/
+
+/docs
+
+mkdocs.yml

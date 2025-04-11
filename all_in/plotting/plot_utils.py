@@ -1,11 +1,22 @@
+import types
+from typing import Sequence, Tuple, Union
+
 import numpy as np
+from matplotlib.figure import Figure
 
 
-def latex_plt(matplotlib):
-    """This function updates the matplotlib library to use Latex and changes some default plot parameters
+def latex_plt(matplotlib: types.ModuleType) -> types.ModuleType:
+    """This function updates the matplotlib library to use Latex and changes some default plot parameters.
 
-    :param matplotlib: matplotlib instance
-    :return: Updated matplotlib instance
+    Parameters
+    ----------
+    matplotlib : module
+        The matplotlib module (e.g., `import matplotlib`) to configure.
+
+    Returns
+    -------
+    module
+        The updated matplotlib module with LaTeX and custom settings applied.
     """
 
     pgf_with_latex = {
@@ -23,14 +34,23 @@ def latex_plt(matplotlib):
     return matplotlib
 
 
-def cm2inch(*tupl):
-    """This function converts cm to inches
+def cm2inch(*tupl: Union[float, Tuple[float, ...]]) -> Tuple[float, ...]:
+    """This function converts cm to inches.
 
     Obtained from: https://stackoverflow.com/questions/14708695/
     specify-figure-size-in-centimeter-in-matplotlib/22787457
 
-    :param tupl: Size of plot in cm
-    :return: Converted image size in inches
+    Parameters
+    ----------
+    tupl : float or tuple of float
+        Size of the plot in centimeters. Can be provided as individual float arguments (e.g., width, height)
+        or as a single tuple of floats.
+
+    Returns
+    -------
+    tuple of float
+        Converted image size in inches.
+
     """
 
     inch = 2.54
@@ -40,16 +60,31 @@ def cm2inch(*tupl):
         return tuple(i / inch for i in tupl)
 
 
-def label_subplots(f, texts, x_offset=-0.07, y_offset=0.015):
-    """This function labels the subplots
+def label_subplots(f: Figure, texts: Sequence[str], x_offset: Union[float, Sequence[float]] = -0.07, y_offset: Union[float, Sequence[float]] = 0.015) -> None:
+    """This function labels the subplots.
 
-     Obtained from: https://stackoverflow.com/questions/52286497/
-     matplotlib-label-subplots-of-different-sizes-the-exact-same-distance-from-corner
+    Obtained from: https://stackoverflow.com/questions/52286497/
+    matplotlib-label-subplots-of-different-sizes-the-exact-same-distance-from-corner
 
-    :param f: Figure handle
-    :param x_offset: Shifts labels on x-axis
-    :param y_offset: Shifts labels on y-axis
-    :param texts: Subplot labels
+    Parameters
+    ----------
+    f : matplotlib.figure.Figure
+        Matplotlib figure handle containing the subplots.
+    texts : sequence of str
+        List of labels for each subplot (e.g., ["A", "B", "C"]).
+    x_offset : float or sequence of float, optional
+        Horizontal offset(s) for the subplot labels.
+        If a single float, the same offset is applied to all subplots.
+        Default is -0.07.
+    y_offset : float or sequence of float, optional
+        Vertical offset(s) for the subplot labels.
+        If a single float, the same offset is applied to all subplots.
+        Default is 0.015.
+
+    Returns
+    -------
+    None
+        This function does not return any value.
     """
 
     # Get axes

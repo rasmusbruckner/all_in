@@ -1,17 +1,26 @@
 import os
 import re
 from fnmatch import fnmatch
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
 
-def get_df_subj(df, i):
-    """This function creates a subject-specific data frame with adjusted index
+def get_df_subj(df: pd.DataFrame, i: int) -> pd.DataFrame:
+    """This function creates a subject-specific data frame with adjusted index.
 
-    :param df: Data frame containing all data
-    :param i: Current subject number
-    :return: df_subj: Index-adjusted subject-specific data frame
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Subject data frame.
+    i : int
+        Subject number.
+
+    Returns
+    -------
+    pd.DataFrame
+        Index-adjusted subject-specific data frame (df_subj).
     """
 
     df_subj = df[(df["subj_num"] == i + 1)].copy()
@@ -20,12 +29,20 @@ def get_df_subj(df, i):
     return df_subj
 
 
-def load_data(f_names, expected_n_trials=400):
-    """This function loads the adaptive learning BIDS data and checks if they are complete
+def load_data(f_names: list[Path], expected_n_trials: int = 400) -> pd.DataFrame:
+    """This function loads the adaptive learning BIDS data and checks if they are complete.
 
-    :param f_names: List with all file names
-    :param expected_n_trials: Expected number of trials
-    :return: all_data: Data frame that contains all data
+    Parameters
+    ----------
+    f_names : list[Path]
+        List with all file names.
+    expected_n_trials : int
+        Expected number of trials.
+
+    Returns
+    -------
+    pd:DataFrame
+        Data frame that contains all data.
     """
 
     # Initialize arrays
@@ -60,14 +77,21 @@ def load_data(f_names, expected_n_trials=400):
     return all_data
 
 
-def sorted_nicely(input_list):
-    """This function sorts the given iterable in the way that is expected
+def sorted_nicely(input_list: list) -> list:
+    """This function sorts the given iterable in the way that is expected.
 
     Obtained from:
-    https://arcpy.wordpress.com/2012/05/11/sorting-alphanumeric-strings-in-python/
+    https://arcpy.wordpress.com/2012/05/11/sorting-alphanumeric-strings-in-python
 
-    :param input_list: The iterable to be sorted
-    :return: Sorted iterable
+    Parameters
+    ----------
+    input_list : list
+        The iterable to be sorted.
+
+    Returns
+    -------
+    list
+        Sorted iterable.
     """
 
     convert = lambda text: int(text) if text.isdigit() else text
@@ -76,16 +100,25 @@ def sorted_nicely(input_list):
     return sorted(input_list, key=alphanum_key)
 
 
-def get_file_paths(folder_path, identifier):
-    """This function extracts the file path
+def get_file_paths(folder_path: Path, identifier: str) -> Path:
+    """This function extracts the file path.
 
-    :param folder_path: Relative path to current folder
-    :param identifier: Identifier for file of interest
-    :return: file_path: Absolute path to file
+    Parameters
+    ----------
+    folder_path : Path
+        Relative path to current folder.
+    identifier : Path
+        Identifier for file of interest.
+
+    Returns
+    -------
+    Path
+        Absolute path to file (file_paths).
     """
 
     file_paths = []
     for path, subdirs, files in os.walk(folder_path):
+
         for name in files:
             if fnmatch(name, identifier):
                 file_paths.append(os.path.join(path, name))
