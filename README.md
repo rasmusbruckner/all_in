@@ -2,6 +2,9 @@
 
 This package contains useful utilities for plotting in Python and general utilities relevant to multiple projects.
 
+⚠️ This is an early-stage version of all_in.
+Expect ongoing development and improvements. Contributions and feedback are welcome!
+
 ## Questions?
 
 For questions, please get in touch with me: [rasmusb@zedat.fu-berlin.de](rasmusb@zedat.fu-berlin.de)
