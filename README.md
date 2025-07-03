@@ -5,6 +5,10 @@ The `allinpy` package contains useful utilities for plotting in Python and gener
 ⚠️ This is an early-stage version of `allinpy`.
 Expect ongoing development and improvements. Contributions and feedback are welcome!
 
+## Documentation
+
+See the package website for detailed [documentation](https://rasmusbruckner.github.io/allinpy/).
+
 ## Questions?
 
 For questions, please get in touch with me: [rasmusb@zedat.fu-berlin.de](rasmusb@zedat.fu-berlin.de)
