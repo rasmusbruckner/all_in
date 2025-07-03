@@ -10,3 +10,9 @@ __pycache__/
 /docs
 
 mkdocs.yml
+
+*.egg-info/
+
+dist/
+
+pyproject.toml

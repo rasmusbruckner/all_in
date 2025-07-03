@@ -47,6 +47,7 @@ def callback(show_ind_prog: bool, pbar: tqdm) -> None:
     Returns
     -------
     None
+        This function does not return any value.
     """
 
     if show_ind_prog:

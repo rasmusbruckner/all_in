@@ -45,34 +45,22 @@ def load_data(f_names: list[Path], expected_n_trials: int = 400) -> pd.DataFrame
         Data frame that contains all data.
     """
 
-    # Initialize arrays
-    n_trials = np.full(len(f_names), np.nan)  # number of trials
+    all_dfs = []
+    n_trials = []
 
-    # Put data in data frame
-    all_data = np.nan
-    for i in range(0, len(f_names)):
+    for i, fname in enumerate(f_names):
+        df = pd.read_csv(fname, sep="\t", header=0)
 
-        if i == 0:
+        n = len(df)
+        n_trials.append(n)
 
-            # Load data of participant 0
-            all_data = pd.read_csv(f_names[0], sep="\t", header=0)
-            new_data = all_data
-        else:
+        if n_trials[-1] != expected_n_trials:
+            print(f"{fname}: {n} trials")
 
-            # Load data of participant 1,..,N
-            new_data = pd.read_csv(f_names[i], sep="\t", header=0)
+        df["trial"] = np.arange(n, dtype=np.int64)
+        all_dfs.append(df)
 
-        # Count number of respective trials
-        n_trials[i] = len(new_data)
-        new_data["trial"] = np.int64(np.arange(n_trials[i]))
-
-        # Indicate if less than expected N trials
-        if n_trials[i] < expected_n_trials:
-            print("Only %i trials found" % n_trials[i])
-
-        # Append data frame
-        if i > 0:
-            all_data = pd.concat([all_data, new_data], ignore_index=True)
+    all_data = pd.concat(all_dfs, ignore_index=True)
 
     return all_data
 
@@ -100,7 +88,7 @@ def sorted_nicely(input_list: list) -> list:
     return sorted(input_list, key=alphanum_key)
 
 
-def get_file_paths(folder_path: Path, identifier: str) -> Path:
+def get_file_paths(folder_path: Path, identifier: str) -> list[str]:
     """This function extracts the file path.
 
     Parameters
@@ -112,7 +100,7 @@ def get_file_paths(folder_path: Path, identifier: str) -> Path:
 
     Returns
     -------
-    Path
+    list[str]
         Absolute path to file (file_paths).
     """
 

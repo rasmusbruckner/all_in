@@ -60,7 +60,12 @@ def cm2inch(*tupl: Union[float, Tuple[float, ...]]) -> Tuple[float, ...]:
         return tuple(i / inch for i in tupl)
 
 
-def label_subplots(f: Figure, texts: Sequence[str], x_offset: Union[float, Sequence[float]] = -0.07, y_offset: Union[float, Sequence[float]] = 0.015) -> None:
+def label_subplots(
+    f: Figure,
+    texts: Sequence[str],
+    x_offset: Union[float, Sequence[float]] = -0.07,
+    y_offset: Union[float, Sequence[float]] = 0.015,
+) -> None:
     """This function labels the subplots.
 
     Obtained from: https://stackoverflow.com/questions/52286497/
@@ -96,8 +101,8 @@ def label_subplots(f: Figure, texts: Sequence[str], x_offset: Union[float, Seque
     if isinstance(y_offset, float):
         y_offset = np.repeat(y_offset, len(axes))
 
-    axis_counter = 0
     # Cycle over subplots and place labels
+    axis_counter = 0
     for a, l in zip(axes, texts):
         x = a.get_position().x0
         y = a.get_position().y1
