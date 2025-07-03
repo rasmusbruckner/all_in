@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "allinpy"
-version = "0.1.0"
+version = "0.1.1"
 description = "Modular utilities for scientific computing and plotting."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -23,3 +23,8 @@ dependencies = [
 
 [project.urls]
 "Source" = "https://github.com/rasmusbruckner/allinpy"
+"Documentation" = "https://rasmusbruckner.github.io/allinpy/"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["allinpy*"]
