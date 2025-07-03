@@ -7,12 +7,6 @@ __pycache__/
 
 .venv/
 
-/docs
-
-mkdocs.yml
-
 *.egg-info/
 
 dist/
-
-pyproject.toml
