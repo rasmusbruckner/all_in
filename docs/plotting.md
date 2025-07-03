@@ -1,3 +1,3 @@
 # Plotting Module
 
-::: all_in.plotting
+::: allinpy.plotting

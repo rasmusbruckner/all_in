@@ -1,8 +1,8 @@
-# All-In Package
+# All-In Python Package
 
-This package contains useful utilities for plotting in Python and general utilities relevant to multiple projects.
+The `allinpy` package contains useful utilities for plotting in Python and general utilities relevant to multiple projects.
 
-⚠️ This is an early-stage version of all_in.
+⚠️ This is an early-stage version of `allinpy`.
 Expect ongoing development and improvements. Contributions and feedback are welcome!
 
 ## Questions?

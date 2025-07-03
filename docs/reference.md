@@ -1,6 +1,6 @@
 # API Reference
 
-Welcome to the API Reference of the `all_in` package.
+Welcome to the API Reference of the `allinpy` package.
 
 - [Utils Module](utils.md): General utility functions.
 - [Plotting Module](plotting.md): Plot formatting and display utilities.

@@ -1,4 +1,4 @@
-from all_in import safe_div
+from allinpy import safe_div
 
 
 def test_safe_div():

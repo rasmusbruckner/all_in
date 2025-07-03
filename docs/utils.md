@@ -1,3 +1,3 @@
 # Utils Module
 
-::: all_in.utils
+::: allinpy.utils

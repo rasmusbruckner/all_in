@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from all_in import get_df_subj, load_data, sorted_nicely
+from allinpy import get_df_subj, load_data, sorted_nicely
 
 
 class TestUtilities(unittest.TestCase):
